@@ -1,0 +1,1 @@
+# Esame_Telerilevamento-2025
