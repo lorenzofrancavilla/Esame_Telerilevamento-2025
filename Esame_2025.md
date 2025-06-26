@@ -74,10 +74,41 @@ im.plotRGB(vaia19, r=4, g=2, b=3)
 ```
 L'output riulterà così per le due immagini :
 
-2018
-<img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/941979f5-2f57-403a-b9d2-ada167c034c7" /> 
+2018 <img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/941979f5-2f57-403a-b9d2-ada167c034c7" /> 
 
-2019
-<img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/5db067ea-cf33-413e-9827-79d48726e0dc" /> 
+2019 <img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/5db067ea-cf33-413e-9827-79d48726e0dc" /> 
 
+In rosso è indicata la vegetazione che riflette la luce e in grigio/azzurro si notano le aree senza copertura vegetale o con copertura vegetale malata/danneggiata
 
+# Calcolo NDVI (Normalized Difference Vegetation Index)
+L'Ndvi è L’NDVI (Normalized Difference Vegetation Index) è un indice spettrale usato in telerilevamento per misurare la salute e densità della vegetazione. Viene calcolato usando le bande NIR (infrarosso vicino) e Red (rosso) di immagini satellitari (come quelle del Sentinel-2).
+le paiante che saranno sane rifletteranno bene la luce nel vicino infrarosso(NIR) invece se la pianta è stressata rifletterà di meno e il colore risulterà piu spento. 
+
+questa è la formula dell'NDVI
+
+$$
+NDVI = \frac{NIR - RED}{NIR + RED}
+$$
+
+NIR (Near Infrared): Banda sensibile alla riflettanza della vegetazione sana.
+Red: Banda in cui la vegetazione assorbe luce per la fotosintesi.
+
+Per calcolare l'NDVI su r è necessario applicare questa formula alle bande NIR e RED delle immagini selezionate:
+
+```r
+ndvi18 = (vaia18[[4]] - vaia18[[1]]) / (vaia18[[4]] + vaia18[[1]])
+plot(ndvi18)
+
+ndvi19 = (vaia19[[4]] - vaia19[[1]]) / (vaia19[[4]] + vaia19[[1]])
+plot(ndvi19)
+
+```
+confrontiamo le NDVI con la funzione im.multiframe
+
+```r
+im.multiframe(1,2)
+plot(ndvi18)
+plot(ndvi19)
+```
+
+L'output sarà questo :
