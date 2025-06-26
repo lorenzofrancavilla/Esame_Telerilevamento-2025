@@ -74,9 +74,9 @@ im.plotRGB(vaia19, r=4, g=2, b=3)
 ```
 L'output riulterà così per le due immagini :
 
-2018 <img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/941979f5-2f57-403a-b9d2-ada167c034c7" /> 
+<img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/941979f5-2f57-403a-b9d2-ada167c034c7" /> 
 
-2019 <img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/5db067ea-cf33-413e-9827-79d48726e0dc" /> 
+<img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/5db067ea-cf33-413e-9827-79d48726e0dc" /> 
 
 In rosso è indicata la vegetazione che riflette la luce e in grigio/azzurro si notano le aree senza copertura vegetale o con copertura vegetale malata/danneggiata
 
@@ -112,3 +112,103 @@ plot(ndvi19)
 ```
 
 L'output sarà questo :
+![Ndvi1819](https://github.com/user-attachments/assets/2a0c8b16-e4e3-4e46-afbd-75c595b075c5)
+
+Si puo vedere nel plot che i valori superiori a 5 si identificano con colori accessi verso verde e giallo indivando la vegetazione sana. 
+Nel 2018 nei mesi pre-Vaia l'NDVI indica un bosco sano dove le piante hanno una buona riflettanza sul NIR, invece nel 2019 si nota l'apparizione di macchie blu che indicano gli schianti delle piante su tutta la conca agordina e sopratutto si nota che verso nord sul versante sud delle pale di dan lucano è apparsa una grande macchia che indica il danno fatto dall'incendio avvenuto una settimana prima della tempesta.
+
+l'NDVI in questo caso ci indica come la composizione e la sanità dei boschi nella vallata possa cambiare in maniera accentuata nel giro di una notte di tempesta.
+
+In seguito al calcolo dell'NDVI dell'area è possibile fare una clasificazione binaria dei pixel in R per distinguere prima di tutto il bosco dalla roccia/ insediamenti urbani e in seguito vedere come nel giro di un anno ci sia stato l'aumento dei pixel nell'immagine simboleggiando la perdita di bosco in seguito alla tempesta/ incendio 
+
+
+
+# Classificazione 
+
+classificazione in 2 parti tra bosco e roccia/urbanizzazione/suolo nudo con la funzione im.classify. mettendo due categorie di classificazione.
+
+```r
+bosco18c = im.classify(ndvi18, num_clusters = 2)
+bosco19c = im.classify(ndvi19, num_clusters = 2)
+```
+codice per invertire le classi di bosco19c, per risolvere problema inversione colori grafico 
+
+```r
+bosco19c = classify(bosco19c, rcl = matrix(c(1, 2, 2, 1), ncol = 2, byrow = TRUE))
+```
+multiframe con la classificazione in due cluster dell'output dell'NDVI
+
+```r
+im.multiframe(1,2)
+plot(bosco18c)
+plot(bosco19c)
+```
+
+Risultato dell'output con colori non invertiti:
+![bosco1819classify](https://github.com/user-attachments/assets/8b8ab317-c55a-460e-b550-b72ff8b155cd)
+
+1 = bosco
+
+2 = roccia, suolo nudo, umano
+
+risulta che nel 2019 la quantità di bosco è diminuita
+Ora che abbiamo la classificazione in due classi sulle due immagini possiamo calcolare i pixel di entrambe le immagini e ricavare la percentuale di bosco e di area urbanizzata/suolo nudo. 
+
+
+# calcolo percentuale bosco nel 2018, 2019 
+calcolo i pixel nell'immagine 2018, 2019 e la percentuale bosco 18 e 19 
+
+Questa funzione fornisce un data frame con colonne value (1 o 2) e count (numero di pixel)
+
+```r
+f18 = freq(bosco18c)  # classi e conteggi per il 2018
+f19 = freq(bosco19c)  # classi e conteggi per il 2019
+```
+risultato 
+```r
+f18
+  layer value   count
+1     1     1 2659214
+2     1     2  508774
+
+f19
+  layer value   count
+1     1     1 2531701
+2     1     2  636287
+```
+
+Totale pixel validi, calcolo il totale dei pixel validi all'interno della calssificazione
+
+```r
+tot18 = ncell(bosco18c) 
+tot19 = ncell(bosco19c)
+
+```
+
+Calcolo la percentuale 
+
+```r
+perc18 = freq(bosco18c)$count * 100 / ncell(bosco18c)
+perc19 = freq(bosco19c)$count * 100 / ncell(bosco19c)
+```
+Le due percentuali rappresentanole aree urbanizzate+bosco perso , prendo solo la percentuale bosco 
+
+83,94 nel 2018
+79,92 nel 2019
+
+Ora faccio la differenza delle percentuali e vedo la percentuale di bosco perso 
+
+```r
+
+boscoperso= perc18-perc19
+```
+
+= 4,03%
+
+considerando che la tempesta è avvenuta in un'unica notte e in concomitanza ad un incendio boschivo, la percentuale di bosco perso è significativa (4%)
+
+
+
+## Ggplot con i dati ottenuti 
+
+
