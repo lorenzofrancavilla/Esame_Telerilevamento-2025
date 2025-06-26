@@ -55,13 +55,29 @@ plotRGB(vaia19, r = 1, g = 2, b = 3, stretch = "lin", main = "sentinel (median)"
 Output delle due immagini con le bande RGB sovrapposte: 
 
 
+# Immagine Sentinel del 2018 e del 2019
+<img width="350" alt="Vaia18RGB" src="https://github.com/user-attachments/assets/08a7d043-d4fc-4164-b48e-394f6ab55b8f" />
+
+<img width="350" alt="Vaia19RGB" src= "https://github.com/user-attachments/assets/6817406d-aaa1-4a98-a8b8-9b069c36088b"/>
 
 
 
+## Immagini con falsi colori 
 
-per visualizzare in maniera migliore la vegetazione è possibile convertire l'immagine rgb con il falso colore evidenziando in rosso le parti di vegetazione. questo passaggio è fondamentale per vedere le parti di vegetazione persa dal 2018 al 2019 nella conca Agordina
+Per visualizzare meglio la vegetazione è possibile convertire l'immagine rgb con il falso colore evidenziando in rosso le parti di vegetazione. questo passaggio è fondamentale per vedere le parti di vegetazione persa dal 2018 al 2019 nella conca Agordina
 
+per il falso falso colore metto la banda NIR sul rosso per vedere la vegetazione nel 2018
 
+```r
+im.plotRGB(vaia18, r=4, g=2, b=3) 
+im.plotRGB(vaia19, r=4, g=2, b=3) 
+```
+L'output riulterà così per le due immagini :
 
+2018
+<img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/941979f5-2f57-403a-b9d2-ada167c034c7" /> 
+
+2019
+<img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/5db067ea-cf33-413e-9827-79d48726e0dc" /> 
 
 
