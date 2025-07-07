@@ -114,6 +114,33 @@ plot(ndvi19)
 L'output sarà questo :
 ![Ndvi1819](https://github.com/user-attachments/assets/2a0c8b16-e4e3-4e46-afbd-75c595b075c5)
 
+Per visualizzare meglio la differenza e creare un multiframe che sia adatto anche alle persone affette da daltonismo possiamo utilizzare una palette specifica del pacchetto [Viridis](https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html) con il seguente codice:
+
+```r
+im.multiframe(1,2)
+plot(ndvi18, col=inferno(100))
+plot(ndvi19, col=inferno(100))
+```
+l'outout sarà di questo tipo :
+
+
+
+![ndviviridis](https://github.com/user-attachments/assets/0ad7b0b0-ef11-48a3-a3f0-c5e26b87655c)
+
+
+
+(Codice r per esportare l'immagine nella cartella settata all'inizio con relativa risoluzione, larghezza e altezza dell'immagine)
+
+```r
+png ("ndviviridis.png", width = 3000, height = 3000, res = 150)
+
+im.multiframe(1,2)
+plot(ndvi18, col=inferno(100))
+plot(ndvi19, col=inferno(100))
+dev.off()
+```
+
+
 Si puo vedere nel plot che i valori superiori a 5 si identificano con colori accessi verso verde e giallo indivando la vegetazione sana. 
 Nel 2018 nei mesi pre-Vaia l'NDVI indica un bosco sano dove le piante hanno una buona riflettanza sul NIR, invece nel 2019 si nota l'apparizione di macchie blu che indicano gli schianti delle piante su tutta la conca agordina e sopratutto si nota che verso nord sul versante sud delle pale di dan lucano è apparsa una grande macchia che indica il danno fatto dall'incendio avvenuto una settimana prima della tempesta.
 
