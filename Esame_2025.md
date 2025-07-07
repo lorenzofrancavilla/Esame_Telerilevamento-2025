@@ -103,7 +103,7 @@ ndvi19 = (vaia19[[4]] - vaia19[[1]]) / (vaia19[[4]] + vaia19[[1]])
 plot(ndvi19)
 
 ```
-confrontiamo le NDVI con la funzione im.multiframe
+confrontiamo le NDVI con la funzione `im.multiframe`
 
 ```r
 im.multiframe(1,2)
@@ -152,13 +152,13 @@ In seguito al calcolo dell'NDVI dell'area è possibile fare una clasificazione b
 
 # Classificazione 
 
-classificazione in 2 parti tra bosco e roccia/urbanizzazione/suolo nudo con la funzione im.classify. mettendo due categorie di classificazione.
+Grazie al pacchetto `imagery` in r è possibile analizzare i dati raster e fare una classificazione dei pixel  in 2 parti. in questo caso si può fare una classificazione in due classi tra bosco e roccia/urbanizzazione/suolo nudo con la funzione im.classify partendo dalle due NDVI.
 
 ```r
 bosco18c = im.classify(ndvi18, num_clusters = 2)
 bosco19c = im.classify(ndvi19, num_clusters = 2)
 ```
-codice per invertire le classi di bosco19c, per risolvere problema inversione colori grafico 
+codice per invertire le classi di `bosco19c`, per risolvere problema inversione colori grafico. 
 
 ```r
 bosco19c = classify(bosco19c, rcl = matrix(c(1, 2, 2, 1), ncol = 2, byrow = TRUE))
@@ -237,5 +237,64 @@ considerando che la tempesta è avvenuta in un'unica notte e in concomitanza ad 
 
 
 ## Ggplot con i dati ottenuti 
+
+
+
+## Obiettivo
+
+Visualizzare le **variazioni nella copertura boschiva** dell’Agordino tra il 2018 e il 2019 usando `ggplot2`.
+
+```r
+# Definizione della classe osservata
+class = c("Percentuale boschi agordino")
+
+# Percentuale di copertura boschiva per anno
+y2018 = c(84)  # anno 2018
+y2019 = c(80)  # anno 2019
+
+# Calcolo perdita
+perdite = y2018 - y2019
+
+# Creazione tabella
+tabout = data.frame(class, y2018, y2019, perdite)
+
+```
+ora crea i grafici `ggplot2` per le varie percentuali :
+
+Grafico per percentuale boschi 2018
+
+```r
+p1 = ggplot(tabout, aes(x=class, y=y2018, color=class)) + 
+  geom_bar(stat="identity", fill="white") + 
+  ylim(c(0,100))
+p1
+```
+
+Grafico per percentuale boschi 2019
+
+```r
+p2 = ggplot(tabout, aes(x=class, y=y2019, color=class)) + 
+  geom_bar(stat="identity", fill="white") + 
+  ylim(c(0,100))
+p2
+
+```
+Grafico per identificare perdita totale del bosco :
+
+```r
+p3 = ggplot(tabout, aes(x=class, y=perdite, color=class)) + 
+  geom_bar(stat="identity", fill="white") + 
+  ylim(c(0,100))
+p3
+```
+
+per unire i grafici in un unico file unisco i grafici con  `+ `
+
+```r
+p1 + p2 + p3
+
+```
+
+l'output finale risulterà così :
 
 
