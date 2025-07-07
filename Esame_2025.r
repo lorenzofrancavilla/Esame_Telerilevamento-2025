@@ -59,6 +59,7 @@ im.multiframe(1,2)
 plot(ndvi18)
 plot(ndvi19)
 
+# visualizziamo con i colori viridis per vedere meglio la differenza
 
 
 im.multiframe(1,2)
