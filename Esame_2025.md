@@ -17,7 +17,6 @@ l'obiettivo di questa ricerca è di cercare di analizzare attraverso il telerile
 - Periodi osservati:
   - **2018**: luglio–ottobre (pre-Vaia)
   - **2019**: luglio–ottobre (post-Vaia)
-  - **2024**: luglio–ottobre (situazione attuale)
 - Risoluzione: 10 m
 - Bande usate: `[1]`B2 (Blu),`[2]` B3 (Verde),`[3]` B4 (Rosso), `[4]`B8 (NIR).
 
@@ -40,7 +39,7 @@ importo immagini dalla cartella "Vaia" che si trova nel desktop e assegno un nom
 setwd("Desktop/Vaia")
 vaia18 = rast("Vaia18Bande.tif")
 vaia19 = rast("Vaia19Bande.tif")
-vaia24 = rast("Vaia24.tif")
+
 ```
 
 Le immagini se plottate sono divise in tre bande (RGB), per vedere l'immagine con colori reali devo unirle.
