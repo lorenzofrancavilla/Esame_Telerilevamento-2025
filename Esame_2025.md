@@ -2,14 +2,14 @@
 
 ##  Tempesta Vaia
 
-Tra il 28 ed il 30 ottobre 2018 ampie zone delle Alpi orientali sono state interessate da venti che hanno superato i 200 km/h ed hanno provocato dei danni gravissimi alle foreste in particolare della Lombardia, del Veneto, del Trentino-Alto Adige e del Friuli Venezia-Giulia. L’evento, chiamato dai meteorologi “tempesta Vaia”, ha provocato secondo le prime stime l’abbattimento di 6-8 milioni di metri cubi di legname ed è sicuramente il più importante disturbo da vento avvenuto recentemente in Italia.
+Tra il 28 ed il 30 ottobre 2018 ampie zone delle Alpi orientali sono state interessate da venti che hanno superato i 200 km/h ed hanno provocato dei danni gravissimi alle foreste in particolare della Lombardia, del Veneto, del Trentino-Alto Adige e del Friuli Venezia-Giulia. L’evento, chiamato dai meteorologi “tempesta Vaia”, ha provocato l’abbattimento di 6-8 milioni di metri cubi di legname ed è sicuramente il più importante disturbo da vento avvenuto recentemente in Italia.
 
-In Italia ci sono aree che storicamente, sia per fattori meteorologici, topografici e stazionali e sia per la struttura dei popolamenti forestali, sono particolarmente sensibili ai danni da vento. Tra queste la conca agordina, insieme a molte aree boschive comprese tra il Veneto e il Trentino sono principalemnte composte da abete rosso. la monocoltura di abete rosso ha causato post-vaia la diffusione del coleottero bostrico tipografo il quale a vivendo e deponendo le uova sotto la corteccia degli abeti rossi fa morire l'albero, diffondendosi in maniera capillare sulle piante a se stanti.
+In Italia ci sono aree che storicamente, sia per fattori meteorologici, topografici e stazionali e sia per la struttura dei popolamenti forestali, sono particolarmente sensibili ai danni da vento. Tra queste la conca agordina, insieme a molte aree boschive comprese tra il Veneto e il Trentino sono principalemnte composte da abete rosso. La monocoltura di abete rosso ha causato post-vaia la diffusione del coleottero bostrico tipografo il quale a vivendo e deponendo le uova sotto la corteccia degli abeti rossi ha fatto morire l'albero, diffondendosi in maniera capillare sulle piante a se stanti.
 
 La tempesta Vaia ha danneggiato in maniera massiccia le foreste nella parte nord est dell'arco alpino e in questo caso ha coplito anche l'area dei comuni di Agordo, Alleghe, Caprile, Rocca Pietore e Livinallongo del Col di Lana. 
-Nella conca agordina martedi 24 ottobre 2018 si verifica un incendio e in seguito una settimana dopo si verifica la tempesta di vento Vaia, questo susseguirsi di eventi estremi porterà alla devastazione di aree boschive in tutta la conca causando disagi sia all'ecosistema che alle persone che abitano quest'area.
+Inoltre nella conca agordina martedi 24 ottobre 2018 si è verifica un incendio causando disagi sia all'ecosistema che alle persone che abitano quest'area.
 
-l'obiettivo di questa ricerca sarà di cercare di analizzare attraverso il telerilevamento analizzare le variazioni della copertura forestale nell’area dell’Agordino tra il 2018 e 2019  a seguito della Tempesta Vaia, utilizzando immagini satellitari Sentinel-2 e l'indice NDVI.
+l'obiettivo di questa ricerca è di cercare di analizzare attraverso il telerilevamento le variazioni della copertura forestale nell’area dell’Agordino tra il 2018 e 2019  a seguito della Tempesta Vaia, utilizzando immagini satellitari Sentinel-2 e l'indice NDVI.
 
 ##  Dati
 - Fonte: [Google Earth Engine (GEE)](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED?hl=it) 
@@ -85,6 +85,7 @@ In rosso è indicata la vegetazione che riflette la luce e in grigio/azzurro si 
 # Calcolo NDVI (Normalized Difference Vegetation Index)
 L'Ndvi è L’NDVI (Normalized Difference Vegetation Index) è un indice spettrale usato in telerilevamento per misurare la salute e densità della vegetazione. Viene calcolato usando le bande NIR (infrarosso vicino) e Red (rosso) di immagini satellitari (come quelle del Sentinel-2).
 le paiante che saranno sane rifletteranno bene la luce nel vicino infrarosso(NIR) invece se la pianta è stressata rifletterà di meno e il colore risulterà piu spento. 
+l'NDVI ha dei valori che variano da 0 a 1, solitamente i valori che si avvicinano allo 0 indicano suolo nudo, fiumi o superfici antropiche invece i valori che si avvicinano all'uno indicano una vegetazione sana.
 
 questa è la formula dell'NDVI
 
@@ -295,6 +296,31 @@ p1 + p2 + p3
 ```
 
 l'output finale risulterà così :
+
+
+![ggplot3](https://github.com/user-attachments/assets/0b14902a-84f6-4dcf-9265-59525b7ecb1e)
+
+Le prime due colonne rappresentano la percentuale di bosco tra il 2018 e il 2019 e invece nell'ultima colonna è rappresentata la perdita di superfice boschiva nella conca agordina che risulta il 4%
+
+Si può calcolare la perdita di bosco in ettari calcolando la superfice in metri quadrati grazie alla risoluzione dell'immagine  Sentinel :
+
+`vaia18`
+
+ Guardo i valori della risoluzione li moltiplico per altezza e larghezza e li moltiplico per 10
+
+ `(1644*1927)*10`
+
+il risultato sarà = 31679880 metri quadrati 
+
+li possiamo moltiplicare per 0,04 ovvero il 4% di bosco perso tra il 2018 e il 2019:
+
+`31679880*0.04`
+
+Il risultato è di  1267195 m^2 che in ettari diventano 126,82 ha. Considerando la tempesta e l'incendio è una perdita significativa in una arco di tempo molto breve (una settimana)
+
+# Conclusioni 
+
+L'analisi della conca agordina durante la tempesta Vaia ha prodotto dei risulati che esprimono l'intensità del fenomeno ventoso che è avvenuto in questa area di montagna. In una notte sono stati sradicati circa 126,82 ha di bosco, oltre a questo ci sono stati fenomeni alluvione rottura degli argini e ovviamente danni a strutture ed abitazioni. Questo evento climatico estremo apre gli occhi sul futuro degli ambienti montani i quali essendo molto sensibili ai cambiamenti climatici saranno sempre di piu soggetti a questi ultimi. Riconoscere il cambiamento e l'aumento di questi fenomeni è fondamentale per ricostruire e attivare le comunità montane in modo da affrontare il fenomeno. In un epoca dove la mercificazione e spettacolarizzazione degli ambienti montani dissolve lo sguardo sulla sua fragilità e complessità sia dal punto divista ecologico, ambientale e umano è necessario agire e sensibilizzare su temi come cambiamento climatico, perdita di biodiversità, turismo e spopolamento. 
 
 
 
