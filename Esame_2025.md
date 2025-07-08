@@ -1,6 +1,6 @@
-# Analisi della Copertura Vegetale nell’Agordino Post-Tempesta Vaia (2018-2024)
+# Analisi della Copertura Vegetale nell’Agordino Post-Tempesta Vaia (2018-2019)
 
-##  Analisi della tempesta Vaia
+##  Tempesta Vaia
 
 Tra il 28 ed il 30 ottobre 2018 ampie zone delle Alpi orientali sono state interessate da venti che hanno superato i 200 km/h ed hanno provocato dei danni gravissimi alle foreste in particolare della Lombardia, del Veneto, del Trentino-Alto Adige e del Friuli Venezia-Giulia. L’evento, chiamato dai meteorologi “tempesta Vaia”, ha provocato secondo le prime stime l’abbattimento di 6-8 milioni di metri cubi di legname ed è sicuramente il più importante disturbo da vento avvenuto recentemente in Italia.
 
@@ -9,7 +9,7 @@ In Italia ci sono aree che storicamente, sia per fattori meteorologici, topograf
 La tempesta Vaia ha danneggiato in maniera massiccia le foreste nella parte nord est dell'arco alpino e in questo caso ha coplito anche l'area dei comuni di Agordo, Alleghe, Caprile, Rocca Pietore e Livinallongo del Col di Lana. 
 Nella conca agordina martedi 24 ottobre 2018 si verifica un incendio e in seguito una settimana dopo si verifica la tempesta di vento Vaia, questo susseguirsi di eventi estremi porterà alla devastazione di aree boschive in tutta la conca causando disagi sia all'ecosistema che alle persone che abitano quest'area.
 
-l'obiettivo di questa ricerca sarà di cercare du analizzare analizzare le variazioni della copertura forestale nell’area dell’Agordino tra il 2018, 2019 e 2024 a seguito della Tempesta Vaia, utilizzando immagini satellitari Sentinel-2 e l'indice NDVI.
+l'obiettivo di questa ricerca sarà di cercare di analizzare attraverso il telerilevamento analizzare le variazioni della copertura forestale nell’area dell’Agordino tra il 2018 e 2019  a seguito della Tempesta Vaia, utilizzando immagini satellitari Sentinel-2 e l'indice NDVI.
 
 ##  Dati
 - Fonte: [Google Earth Engine (GEE)](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED?hl=it) 
@@ -19,7 +19,7 @@ l'obiettivo di questa ricerca sarà di cercare du analizzare analizzare le varia
   - **2019**: luglio–ottobre (post-Vaia)
   - **2024**: luglio–ottobre (situazione attuale)
 - Risoluzione: 10 m
-- Bande usate: B2 (Blu), B3 (Verde), B4 (Rosso), B8 (NIR)
+- Bande usate: `[1]`B2 (Blu),`[2]` B3 (Verde),`[3]` B4 (Rosso), `[4]`B8 (NIR).
 
 ## Pacchetti R utilizzati
 
@@ -34,7 +34,7 @@ library(patchwork)
 
 ### Impostazione della working directory e importazione delle immagini scaricate da Google Earth Engine
 
-importo immagini dalla cartella "Vaia" che si trova nel desktop e assegno un nome (le immagini se plottate sono divise in tre bande(RGB) devo unirle)
+importo immagini dalla cartella "Vaia" che si trova nel desktop e assegno un nome (le immagini scaricate da GEE sono divise in tre bande(RGB) devo unirle)
 
 ```r
 setwd("Desktop/Vaia")
@@ -55,7 +55,7 @@ plotRGB(vaia19, r = 1, g = 2, b = 3, stretch = "lin", main = "sentinel (median)"
 Output delle due immagini con le bande RGB sovrapposte: 
 
 
-# Immagine Sentinel del 2018 e del 2019
+## Immagine Sentinel del 2018 e del 2019
 <img width="350" alt="Vaia18RGB" src="https://github.com/user-attachments/assets/08a7d043-d4fc-4164-b48e-394f6ab55b8f" />
 
 <img width="350" alt="Vaia19RGB" src= "https://github.com/user-attachments/assets/6817406d-aaa1-4a98-a8b8-9b069c36088b"/>
@@ -64,7 +64,8 @@ Output delle due immagini con le bande RGB sovrapposte:
 
 ## Immagini con falsi colori 
 
-Per visualizzare meglio la vegetazione è possibile convertire l'immagine rgb con il falso colore evidenziando in rosso le parti di vegetazione. questo passaggio è fondamentale per vedere le parti di vegetazione persa dal 2018 al 2019 nella conca Agordina
+Per visualizzare meglio la vegetazione è possibile convertire l'immagine rgb con il falso colore evidenziando in rosso le parti di vegetazione. questo passaggio è fondamentale per vedere le parti di vegetazione persa dal 2018 al 2019 nella conca Agordina.
+Nello spettro elettromagnetico la banda del vicino infrarosso  (non visibile all'occhio umano) viene assorbita e riflessa dalle piante in maniera chiara perciò è utile per vedere la vegetazione sana.
 
 per il falso falso colore metto la banda NIR sul rosso per vedere la vegetazione nel 2018
 
@@ -78,7 +79,8 @@ L'output riulterà così per le due immagini :
 
 <img width="350" alt="Vaia18false" src="https://github.com/user-attachments/assets/5db067ea-cf33-413e-9827-79d48726e0dc" /> 
 
-In rosso è indicata la vegetazione che riflette la luce e in grigio/azzurro si notano le aree senza copertura vegetale o con copertura vegetale malata/danneggiata
+In rosso è indicata la vegetazione che riflette la luce e in grigio/azzurro si notano le aree senza copertura vegetale o con copertura vegetale malata/danneggiata.
+
 
 # Calcolo NDVI (Normalized Difference Vegetation Index)
 L'Ndvi è L’NDVI (Normalized Difference Vegetation Index) è un indice spettrale usato in telerilevamento per misurare la salute e densità della vegetazione. Viene calcolato usando le bande NIR (infrarosso vicino) e Red (rosso) di immagini satellitari (come quelle del Sentinel-2).
@@ -239,10 +241,7 @@ considerando che la tempesta è avvenuta in un'unica notte e in concomitanza ad 
 ## Ggplot con i dati ottenuti 
 
 
-
-## Obiettivo
-
-Visualizzare le **variazioni nella copertura boschiva** dell’Agordino tra il 2018 e il 2019 usando `ggplot2`.
+Visualizzazione delle **variazioni nella copertura boschiva** dell’Agordino tra il 2018 e il 2019 usando `ggplot2`.
 
 ```r
 # Definizione della classe osservata
@@ -296,5 +295,7 @@ p1 + p2 + p3
 ```
 
 l'output finale risulterà così :
+
+
 
 
