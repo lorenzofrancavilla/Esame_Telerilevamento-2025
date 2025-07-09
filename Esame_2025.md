@@ -227,7 +227,7 @@ Calcolo la percentuale
 perc18 = freq(bosco18c)$count * 100 / ncell(bosco18c)
 perc19 = freq(bosco19c)$count * 100 / ncell(bosco19c)
 ```
-Le due percentuali rappresentanole aree urbanizzate+bosco perso , prendo solo la percentuale bosco 
+Le due percentuali rappresentano le aree urbanizzate più il bosco perso , prendo solo la percentuale bosco 
 
 *83,94* nel 2018, arrotondato *84%*
 
