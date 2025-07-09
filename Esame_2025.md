@@ -191,7 +191,7 @@ Risulta che nel 2019 la quantità di bosco è diminuita.
 Ora che abbiamo la classificazione in due classi sulle due immagini possiamo calcolare i pixel di entrambe le immagini e ricavare la percentuale di bosco e di area urbanizzata/suolo nudo. 
 
 
-# Calcolo percentuale bosco nel 2018, 2019 
+# Calcolo percentuale bosco nel 2018 e 2019 
 calcolo i pixel nell'immagine 2018, 2019 e la percentuale bosco 18 e 19 
 
 Questa funzione fornisce un data frame con colonne value (1 o 2) e count (numero di pixel)
