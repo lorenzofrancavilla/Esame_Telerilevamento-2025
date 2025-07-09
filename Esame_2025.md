@@ -4,10 +4,10 @@
 
 Tra il 28 ed il 30 ottobre 2018 ampie zone delle Alpi orientali sono state interessate da venti che hanno superato i 200 km/h ed hanno provocato dei danni gravissimi alle foreste in particolare della Lombardia, del Veneto, del Trentino-Alto Adige e del Friuli Venezia-Giulia. L’evento, chiamato dai meteorologi “tempesta Vaia”, ha provocato l’abbattimento di 6-8 milioni di metri cubi di legname ed è sicuramente il più importante disturbo da vento avvenuto recentemente in Italia.
 
-In Italia ci sono aree che storicamente, sia per fattori meteorologici, topografici e stazionali e sia per la struttura dei popolamenti forestali, sono particolarmente sensibili ai danni da vento. Tra queste la conca agordina, insieme a molte aree boschive comprese tra il Veneto e il Trentino sono principalemnte composte da abete rosso. La monocoltura di abete rosso ha causato post-vaia la diffusione del coleottero bostrico tipografo il quale a vivendo e deponendo le uova sotto la corteccia degli abeti rossi ha fatto morire l'albero, diffondendosi in maniera capillare sulle piante a se stanti.
+In Italia ci sono aree che storicamente, sia per fattori meteorologici, topografici e stazionali e sia per la struttura dei popolamenti forestali, sono particolarmente sensibili ai danni da vento. Tra queste la conca agordina, insieme a molte aree boschive comprese tra il Veneto e il Trentino sono principalemnte composte da abete rosso. La monocoltura di abete rosso ha causato post-vaia la diffusione del coleottero bostrico tipografo il quale  vivendo e deponendo le uova sotto la corteccia degli abeti rossi danneggia e provoca la morte agli alberi, diffondendosi in maniera capillare sulle piante vicine.
 
 La tempesta Vaia ha danneggiato in maniera massiccia le foreste nella parte nord est dell'arco alpino e in questo caso ha coplito anche l'area dei comuni di Agordo, Alleghe, Caprile, Rocca Pietore e Livinallongo del Col di Lana. 
-Inoltre nella conca agordina martedi 24 ottobre 2018 si è verifica un incendio causando disagi sia all'ecosistema che alle persone che abitano quest'area.
+Inoltre nella conca agordina martedi 24 ottobre 2018, una settimana prima della tempesta, si è verificato un incendio causando disagi sia all'ecosistema che alle persone che abitano quest'area.
 
 l'obiettivo di questa ricerca è di cercare di analizzare attraverso il telerilevamento le variazioni della copertura forestale nell’area dell’Agordino tra il 2018 e 2019  a seguito della Tempesta Vaia, utilizzando immagini satellitari Sentinel-2 e l'indice NDVI.
 
