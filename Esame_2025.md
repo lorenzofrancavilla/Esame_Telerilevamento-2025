@@ -180,7 +180,7 @@ Risultato dell'output con colori non invertiti:
 
 2 = roccia, suolo nudo, umano
 
-risulta che nel 2019 la quantità di bosco è diminuita
+Risulta che nel 2019 la quantità di bosco è diminuita.
 Ora che abbiamo la classificazione in due classi sulle due immagini possiamo calcolare i pixel di entrambe le immagini e ricavare la percentuale di bosco e di area urbanizzata/suolo nudo. 
 
 
@@ -222,8 +222,9 @@ perc19 = freq(bosco19c)$count * 100 / ncell(bosco19c)
 ```
 Le due percentuali rappresentanole aree urbanizzate+bosco perso , prendo solo la percentuale bosco 
 
-83,94 nel 2018
-79,92 nel 2019
+*83,94* nel 2018, arrotondato *84%*
+
+*79,92* nel 2019, arrotondato *80%*
 
 Ora faccio la differenza delle percentuali e vedo la percentuale di bosco perso 
 
@@ -315,7 +316,7 @@ li possiamo moltiplicare per 0,04 ovvero il 4% di bosco perso tra il 2018 e il 2
 
 `31679880*0.04`
 
-Il risultato è di  1267195 m^2 che in ettari diventano 126,82 ha. Considerando la tempesta e l'incendio è una perdita significativa in una arco di tempo molto breve (una settimana)
+Il risultato è di  1.267.195 $m^2$  che in ettari diventano 126,82 ha. Considerando la tempesta e l'incendio è una perdita significativa in una arco di tempo molto breve (una settimana).
 
 # Conclusioni 
 
