@@ -1,6 +1,6 @@
 # scaricato immagini da GEE
 # ho usato Sentinel con bande (B2-blu, B3-green, B4-red, B8-NIR)
-#scaricato da google earth engine due immagini che fanno la mediana
+# scaricato da google earth engine due immagini che fanno la mediana
 # la prima immagine corrisponde al periodo di tempo che va da luglio ad ottobre del 2018, la seconda da luglio ad ottobre del 2019
 
 setwd("Desktop/Vaia")
@@ -117,6 +117,9 @@ class = c("Percentuale boschi agordino") # stabilisco cosa voglio indicare
 y2018 = c(84) # indico anno e percentuale di bosco 
 y2019 = c(80)
 perdite = y2018 - y2019 
+
+# tabout per creare la tabella di output con le classi gli anni e le perdite 
+
 tabout = data.frame(class, y2018, y2019, perdite )
 
 p1 = ggplot(tabout, aes(x=class, y=y2018, color=class)) + 
@@ -138,36 +141,24 @@ p00 = im.ggplot(ndvi19)
   
 p1 + p2 + p3
 
-# differenza NDVI
-diff_ndvi = ndvi19 - ndvi18
+# calcolo quanti ettari di bosco sono andati persi 
 
-# imposta soglia per perdita bosco (es. -0.3)
-soglia_perdita = -0.3
+vaia18 # per vedere la risoluzione , 10m per pixel 
 
-# crea raster binario: TRUE dove perdita NDVI significativa
-perdita_ndvi = diff_ndvi < soglia_perdita
+# moltiplico i pixel e moltiplico per 10 
 
-# plot differenza NDVI
-plot(diff_ndvi, main = "Differenza NDVI 2019 - 2018", col = viridis(100))
+(1644*1927)*10
 
-# evidenzia solo le aree di perdita significativa in rosso su mappa vuota
-plot(perdita_ndvi, col = c("transparent", "red"))
+# risultato in metri quadrati = 31679880
+# tra il 2019 e il 2019 abbiamo perso il 4% di 31679880
+# quindi 
 
-im.multiframe(1,2)
-plot(diff_ndvi, main = "Differenza NDVI 2019 - 2018", col = viridis(100))
-plot(perdita_ndvi, col = c("transparent", "red"))
+31679880*0.04
+
+# risultato : 1267195 m^2 in ettari 126,82 ha
 
 
-# vaia 24
-vaia24=rast("Vaia24.tif")
-plot(vaia24)
 
-plotRGB(vaia24, r = 1, g = 2, b = 3, stretch = "lin", main = "sentinel (median)")
 
-ndvi24 = (vaia24[[4]] - vaia24[[1]]) / (vaia24[[4]] + vaia24[[1]])
-plot(ndvi24)
 
-im.multiframe(1,3)
-plot(ndvi18)
-plot(ndvi19)
-plot(ndvi24)
+
