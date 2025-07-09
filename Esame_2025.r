@@ -86,8 +86,8 @@ plot(bosco19c)
 
 # calcolo i pixel nell'immagine 2018 e la percentuale bosco 18 e 19 
 # Questa funzione fornisce un data frame con colonne value (1 o 2) e count (numero di pixel)
-f18 <- freq(bosco18c)  # classi e conteggi per il 2018
-f19 <- freq(bosco19c)  # classi e conteggi per il 2019
+f18 = freq(bosco18c)  # classi e conteggi per il 2018
+f19 = freq(bosco19c)  # classi e conteggi per il 2019
 
 
 
