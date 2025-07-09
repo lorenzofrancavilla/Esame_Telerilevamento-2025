@@ -1,5 +1,12 @@
 # Analisi della Copertura Vegetale nell’Agordino Post-Tempesta Vaia (2018-2019)
 
+## Lorenzo Francavilla 
+## 9 Luglio 2025
+
+
+
+
+
 ##  Tempesta Vaia
 
 Tra il 28 ed il 30 ottobre 2018 ampie zone delle Alpi orientali sono state interessate da venti che hanno superato i 200 km/h ed hanno provocato dei danni gravissimi alle foreste in particolare della Lombardia, del Veneto, del Trentino-Alto Adige e del Friuli Venezia-Giulia. L’evento, chiamato dai meteorologi “tempesta Vaia”, ha provocato l’abbattimento di 6-8 milioni di metri cubi di legname ed è sicuramente il più importante disturbo da vento avvenuto recentemente in Italia.
